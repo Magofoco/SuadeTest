@@ -1,0 +1,36 @@
+{% extends "layout.html"%}
+{% block content%}
+
+{% for report in reports %}
+{% if report['id'] != 5%}
+
+<div class="container">
+
+  <div class="mt-3 card mb-12">
+    <div class="row no-gutters">
+      <div class="col-md-2" style="background-color: #2382e8">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <a href="{{url_for('reportdetail', report_id=report['id'])}}"><h5 class="card-title">{{report['type']["organization"]}}</h5></a>
+          <h5>Inventory:</h5>
+          {% for inventory in report['type']["inventory"] %}
+          <p class="card-text">{{inventory["name"]}} - {{inventory["price"]}}£</p>
+          {% endfor %}
+
+          <p class="card-text"><small class="text-muted">Created at: {{report['type']["created_at"]}}</small></p>
+        </div>
+      </div>
+      <div class="mt-1 col-md-2">
+        <a href="{{url_for('reportdetail', report_id=report['id'])}}" class="btn btn-primary btn-block br-1">Check this report</a>
+        <a href="{{url_for('pdf_template', report_id=report['id']  )}}" class="btn btn-primary btn-block br-1">Create PDF</a>
+        <a href="{{url_for('xml_template', report_id=report['id']  )}}" class="btn btn-primary btn-block br-1">Create XML</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endif %}
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,4 @@
+.jumbotron { background-color: white !important  }
+.navbar {visibility: hidden !important }
+.btn-outline-primary {display: none !important }
+.inventory {margin-top: 40% !important;}

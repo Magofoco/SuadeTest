@@ -1,0 +1,15 @@
+{% extends "layout.html"%}
+{% block content%}
+<div class="mt-5 container">
+  <div class="jumbotron">
+    <h1 class="display-4 text-center">Welcome to Suade Labs Reporting Tool</h1>
+    <p class="lead"></p>
+    <hr class="my-4">
+    <div class="text-center">
+      <p>Explore the reports in order to download the PDF or XML</p>
+      <a class="btn btn-primary text-center" href="{{url_for('allreports')}}" role="button">Explore reports</a>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

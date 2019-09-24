@@ -1,0 +1,33 @@
+{% extends "layout.html"%}
+{% block content%}
+
+<div class="mt-5 container">
+  <div class="row no-gutters">
+    <div class="col-md-12">
+      <div class="jumbotron" style="height:85vh" id="jumbotron">
+        <h1 class="display-4 text-center">The Report</h1>
+        <hr class="my-4"/>
+        <div class="col-md-4 offset-8">
+          <p><b>Organization:</b> {{report['type']["organization"]}}</p>
+          <p><b>Reported at:</b> {{report['type']["reported_at"]}}</p>
+          <p><b>Created:</b> {{report['type']["created_at"]}}</p>
+        </div>
+        <div class="text-center">
+          <div class="inventory">
+            <h5>Inventory</h5>
+            {% for inventory in report['type']["inventory"] %}
+            <p class="card-text">{{inventory["name"]}} - {{inventory["price"]}}£</p>
+            {% endfor %}
+          </div>
+        </div>
+        <div id="bottom-buttons">
+          <p class="mt-5 lead text-center">
+            <a id="hide-buttons" class="btn btn-outline-primary" href="{{url_for('pdf_template', report_id=report['id'])}}" role="button">Download PDF</a>
+            <a id="hide-buttons" class="btn btn-outline-primary" href="{{url_for('xml_template', report_id=report['id'])}}" role="button">Download XML</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
